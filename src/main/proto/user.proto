@@ -1,0 +1,15 @@
+syntax="proto3";
+
+option java_multiple_files = true;
+option java_package = "com.widedelivery.auth.proto";
+
+package auth;
+
+message UserDTO {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string role = 4;
+  string phoneNumber = 5;
+}
+

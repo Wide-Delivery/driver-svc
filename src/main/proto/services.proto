@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.widedelivery.driver.proto";
+option java_outer_classname = "DriverProto";
+
+package driver;
+
+import "rpc_make_driver_from_user.proto";
+
+import "driver.proto";
+import "trip.proto";
+
+service DriverService {
+  rpc MakeDriverFromUser(MakeDriverFromUserInput) returns (Driver) {}
+  rpc GetDriverByUserId(UserId) returns (Driver) {}
+  rpc UpdateDriverInfo(Driver) returns (Driver) {}
+  rpc GetDriverById(DriverId) returns (Driver) {}
+
+  rpc CreateDriverTrip(CreateDriverTripInput) returns (DriverTrip) {}
+  rpc GetDriverTrips(DriverId) returns (DriverTrips) {}
+  rpc GetDriverTripById(DriverTripId) returns (DriverTrip) {}
+  rpc UpdateDriverTrip(UpdateDriverTripInput) returns (DriverTrip) {}
+  rpc DeleteDriverTrip(DriverTripId) returns (GenericResponse) {}
+}
+
+message UserId {
+  string user_id = 1;
+}
+
+message DriverId {
+  string driver_id = 1;
+}
+
+message DriverTripId {
+  string driver_trip_id = 1;
+}
+
+message GenericResponse {
+  string status = 1;
+  string message = 2;
+}

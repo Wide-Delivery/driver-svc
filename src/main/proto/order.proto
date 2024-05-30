@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.widedelivery.order.proto";
+
+package order;
+
+import "google/protobuf/timestamp.proto";
+
+message Order {
+  string id = 1;
+  string user_id = 2;
+  double cargo_length = 3;
+  double cargo_width = 4;
+  double cargo_height = 5;
+  double cargo_weight = 6;
+  string departure_longitude = 7;
+  string departure_latitude = 8;
+  google.protobuf.Timestamp departure_time = 9;
+  string destination_longitude = 10;
+  string destination_latitude = 11;
+  google.protobuf.Timestamp destination_time = 12;
+  string description = 13;
+  bool need_loader = 14;
+  string payment_method = 15;
+  google.protobuf.Timestamp createdAt = 16;
+  google.protobuf.Timestamp updatedAt = 17;
+  string driver_id = 18;
+  OrderStatus status = 19;
+  string current_location  = 20;
+}
+
+enum OrderStatus {
+  CREATED = 0;
+  NEED_PAYMENT = 1;
+  MATCHING_DRIVER = 2;
+  CANNOT_MATCH_DRIVER = 3;
+  READY = 4;
+  DRIVER_MOVES_TO_PICKUP = 5;
+  WAIT_FOR_PICKUP = 6;
+  PICKUP = 7;
+  TRANSPORTATION = 8;
+  UNLOADING = 9;
+  COMPLETED = 10;
+  CANCELLED = 11;
+}
+
+message OrderResponse { Order order = 1; }
+
+message GenericResponse {
+  string status = 1;
+  string message = 2;
+}

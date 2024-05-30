@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package driver;
+
+option java_package = "com.widedelivery.driver.proto";
+
+import "truck.proto";
+import "trip.proto";
+
+message MakeDriverFromUserInput {
+  string user_id = 1;
+  bool may_be_loader = 2;
+  int32 search_radius = 3;
+  TruckInput truck = 4;
+}

@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  driver-svc:
+    image: 'stanislavmatsak/wd-driver-svc:driver-start'
+    container_name: 'driver-svc'
+    ports:
+      - '3007:3007'
+
+volumes:
+  wd-driver-svc-logs:
+
+
+
+

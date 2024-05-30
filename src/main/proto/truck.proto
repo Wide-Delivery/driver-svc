@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_package = "com.widedelivery.driver.proto";
+
+package driver;
+
+message TruckInput {
+  string truck_brand = 1;
+  string truck_model = 2;
+  string truck_plate = 3;
+  string truck_serial_number = 4;
+  string truck_color = 5;
+  double free_space_length = 6;
+  double free_space_width = 7;
+  double free_space_height = 8;
+}
+
+message Truck {
+  string truck_brand = 1;
+  string truck_model = 2;
+  string truck_plate = 3;
+  string truck_serial_number = 4;
+  string truck_color = 5;
+  TruckType truck_type = 6;
+  double free_space_length = 7;
+  double free_space_width = 8;
+  double free_space_height = 9;
+  int32 transportations_count = 10;
+  bool is_available_now = 11;
+}
+
+enum TruckType {
+  SMALL = 0;
+  MEDIUM = 1;
+  LARGE = 2;
+}
