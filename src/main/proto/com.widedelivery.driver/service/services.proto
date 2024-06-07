@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.widedelivery.driver.service";
+option java_outer_classname = "DriverProto";
+
+package com.widedelivery.driver.service;
+
+import "com.widedelivery.driver/rpc_make_driver_from_user.proto";
+
+import "com.widedelivery.driver/driver.proto";
+import "com.widedelivery.driver/trip.proto";
+
+service DriverService {
+  rpc MakeDriverFromUser(com.widedelivery.driver.proto.MakeDriverFromUserInput) returns (com.widedelivery.driver.proto.Driver) {}
+  rpc GetDriverByUserId(UserId) returns (com.widedelivery.driver.proto.Driver) {}
+  rpc UpdateDriverInfo(com.widedelivery.driver.proto.Driver) returns (com.widedelivery.driver.proto.Driver) {}
+  rpc GetDriverById(DriverId) returns (com.widedelivery.driver.proto.Driver) {}
+
+  rpc CreateDriverTrip(com.widedelivery.driver.proto.CreateDriverTripInput) returns (com.widedelivery.driver.proto.DriverTrip) {}
+  rpc GetDriverTrips(DriverId) returns (com.widedelivery.driver.proto.DriverTrips) {}
+  rpc GetDriverTripById(DriverTripId) returns (com.widedelivery.driver.proto.DriverTrip) {}
+  rpc UpdateDriverTrip(com.widedelivery.driver.proto.UpdateDriverTripInput) returns (com.widedelivery.driver.proto.DriverTrip) {}
+  rpc DeleteDriverTrip(DriverTripId) returns (GenericResponse) {}
+}
+
+message UserId {
+  string user_id = 1;
+}
+
+message DriverId {
+  string driver_id = 1;
+}
+
+message DriverTripId {
+  string driver_trip_id = 1;
+}
+
+message GenericResponse {
+  string status = 1;
+  string message = 2;
+}

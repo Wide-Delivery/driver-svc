@@ -4,9 +4,9 @@ option java_multiple_files = true;
 option java_package = "com.widedelivery.driver.proto";
 
 import "google/protobuf/timestamp.proto";
-import "order.proto";
+import "com.widedelivery.order/order.proto";
 
-package driver;
+package com.widedelivery.driver.proto;
 
 message DriverTrip {
   string trip_id = 1;
@@ -22,7 +22,7 @@ message DriverTrip {
   double free_space_height = 11;
 
   DriverTripStatus status = 12;
-  repeated order.Order accepted_orders = 13;
+  repeated order.proto.Order accepted_orders = 13;
 
   google.protobuf.Timestamp created_at = 14;
   google.protobuf.Timestamp updated_at = 15;

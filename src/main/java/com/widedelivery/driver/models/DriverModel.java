@@ -1,7 +1,6 @@
 package com.widedelivery.driver.models;
 
 import com.widedelivery.driver.proto.DriverOuterClass;
-import com.widedelivery.driver.proto.TruckOuterClass;
 import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
@@ -76,15 +75,15 @@ public class DriverModel {
 
         private boolean isAvailableNow;
 
-        public TruckOuterClass.Truck getGrpcMessage() {
-            return TruckOuterClass.Truck
+        public com.widedelivery.driver.proto.Truck getGrpcMessage() {
+            return com.widedelivery.driver.proto.Truck
                     .newBuilder()
                     .setTruckBrand(this.truckBrand)
                     .setTruckModel(this.truckModel)
                     .setTruckPlate(this.truckPlate)
                     .setTruckSerialNumber(this.truckSerialNumber)
                     .setTruckColor(this.truckColor)
-                    .setTruckType(TruckOuterClass.TruckType.valueOf(this.truckType.name()))
+                    .setTruckType(com.widedelivery.driver.proto.TruckType.valueOf(this.truckType.name()))
                     .setFreeSpaceLength(this.freeSpaceLength)
                     .setFreeSpaceWidth(this.freeSpaceWidth)
                     .setFreeSpaceHeight(this.freeSpaceHeight)

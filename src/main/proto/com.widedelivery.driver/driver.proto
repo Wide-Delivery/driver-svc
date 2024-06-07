@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package com.widedelivery.driver.proto;
+
+option java_package = "com.widedelivery.driver.proto";
+
+import "com.widedelivery.driver/truck.proto";
+import "com.widedelivery.driver/trip.proto";
+import "com.widedelivery.auth/user.proto";
+
+message Driver {
+  string driver_id = 1;
+  string user_id = 2;
+  bool may_be_loader = 3;
+  int32 search_radius = 4;
+  Truck truck = 5;
+}
+
+message DriverExtendedModel {
+  string driver_id = 1;
+  com.widedelivery.auth.proto.UserDTO driver_as_user_model = 2;
+  bool may_be_loader = 3;
+  int32 search_radius = 4;
+  Truck truck = 5;
+}
+
+message DriverWithTrips {
+  Driver driver = 1;
+  repeated DriverTrip trips = 2;
+}

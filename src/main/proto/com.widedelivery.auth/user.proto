@@ -3,7 +3,7 @@ syntax="proto3";
 option java_multiple_files = true;
 option java_package = "com.widedelivery.auth.proto";
 
-package auth;
+package com.widedelivery.auth.proto;
 
 message UserDTO {
   string id = 1;

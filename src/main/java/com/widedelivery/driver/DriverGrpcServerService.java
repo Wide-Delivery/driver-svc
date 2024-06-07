@@ -5,8 +5,8 @@ import com.widedelivery.driver.models.DriverTripModel;
 import com.widedelivery.driver.models.PreCreatedDriverModel;
 import com.widedelivery.driver.models.PreCreatedTripModel;
 import com.widedelivery.driver.proto.*;
+import com.widedelivery.driver.service.*;
 import com.widedelivery.driver.services.DriverService;
-import io.grpc.Metadata;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -24,7 +24,7 @@ public class DriverGrpcServerService extends DriverServiceGrpc.DriverServiceImpl
     DriverService driverService;
 
     @Override
-    public void makeDriverFromUser(RpcMakeDriverFromUser.MakeDriverFromUserInput request, StreamObserver<DriverOuterClass.Driver> responseObserver) {
+    public void makeDriverFromUser(MakeDriverFromUserInput request, StreamObserver<DriverOuterClass.Driver> responseObserver) {
         PreCreatedDriverModel preCreatedDriverModel = PreCreatedDriverModel.getFromGrpcRequest(request);
 
         try {
@@ -107,7 +107,7 @@ public class DriverGrpcServerService extends DriverServiceGrpc.DriverServiceImpl
         } else {
             responseObserver.onError(new Exception("Driver Trip not found"));
         }
-        responseObserver.onCompleted();;
+        responseObserver.onCompleted();
     }
 
     @Override

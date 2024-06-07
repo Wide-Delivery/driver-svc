@@ -2,7 +2,7 @@ package com.widedelivery.driver.services;
 
 import com.widedelivery.driver.models.*;
 import com.widedelivery.driver.proto.DriverOuterClass;
-import com.widedelivery.driver.proto.TruckOuterClass;
+import com.widedelivery.driver.proto.Truck;
 import com.widedelivery.driver.repos.DriverRepository;
 import com.widedelivery.driver.repos.DriverTripRepository;
 import com.widedelivery.driver.repos.ItemRepository;
@@ -99,7 +99,7 @@ public class DriverServiceImpl implements DriverService {
             existingDriver.setMayBeLoader(driverToUpdate.getMayBeLoader()); //TODO be carefull on client api
         }
         if (driverToUpdate.getTruck().hashCode() != existingDriver.getTruck().hashCode()) { // TODO not hash code
-            TruckOuterClass.Truck truckToUpdate = driverToUpdate.getTruck();
+            Truck truckToUpdate = driverToUpdate.getTruck();
             DriverModel.Truck existedTruck = existingDriver.getTruck();
             if (!truckToUpdate.getTruckBrand().equals(existedTruck.getTruckBrand())) {
                 existedTruck.setTruckBrand(truckToUpdate.getTruckBrand());

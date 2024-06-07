@@ -1,6 +1,8 @@
 package com.widedelivery.driver.models;
 
+import com.widedelivery.driver.proto.MakeDriverFromUserInput;
 import com.widedelivery.driver.proto.RpcMakeDriverFromUser;
+import com.widedelivery.driver.proto.TruckInput;
 import com.widedelivery.driver.proto.TruckOuterClass;
 import lombok.*;
 import org.bson.types.ObjectId;
@@ -45,7 +47,7 @@ public class PreCreatedDriverModel {
 
         private double freeSpaceHeight;
 
-        public static PreCreatedTruckModel getFromGrpcRequest(TruckOuterClass.TruckInput createTruckInput) {
+        public static PreCreatedTruckModel getFromGrpcRequest(TruckInput createTruckInput) {
             PreCreatedTruckModel newTruck = new PreCreatedTruckModel();
             newTruck.setTruckBrand(createTruckInput.getTruckBrand());
             newTruck.setTruckModel(createTruckInput.getTruckModel());
@@ -73,7 +75,7 @@ public class PreCreatedDriverModel {
         }
     }
 
-    public static PreCreatedDriverModel getFromGrpcRequest(RpcMakeDriverFromUser.MakeDriverFromUserInput createOrderInput) {
+    public static PreCreatedDriverModel getFromGrpcRequest(MakeDriverFromUserInput createOrderInput) {
         PreCreatedDriverModel newDriver = new PreCreatedDriverModel();
         newDriver.setUserId(new ObjectId(createOrderInput.getUserId()));
         newDriver.setSearchRadius(createOrderInput.getSearchRadius());

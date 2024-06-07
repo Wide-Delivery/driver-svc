@@ -3,7 +3,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.widedelivery.order.proto";
 
-package order;
+package com.widedelivery.order.proto;
 
 import "google/protobuf/timestamp.proto";
 
